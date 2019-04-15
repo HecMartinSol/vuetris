@@ -49,6 +49,8 @@
 		methods:{
 			paintPiece() {
 				console.log("pinto pieza " + this.curr_piece );
+				$(".board_cell").css("background-color", "#1a1a1a");
+
 				switch (this.curr_piece) {
 					case 0: // I
 						$("#cell_0_3").css("background-color" , "cyan");
@@ -57,10 +59,10 @@
 						$("#cell_0_6").css("background-color" , "cyan");
 					break;
 					case 1: // T
+						$("#cell_0_3").css("background-color" , "purple");
 						$("#cell_0_4").css("background-color" , "purple");
 						$("#cell_0_5").css("background-color" , "purple");
-						$("#cell_0_6").css("background-color" , "purple");
-						$("#cell_1_5").css("background-color" , "purple");
+						$("#cell_1_4").css("background-color" , "purple");
 					break;
 					case 2: // cuadrado
 						$("#cell_0_4").css("background-color" , "yellow");
@@ -71,26 +73,26 @@
 					case 3: // Z
 						$("#cell_0_3").css("background-color" , "green");
 						$("#cell_0_4").css("background-color" , "green");
-						$("#cell_0_5").css("background-color" , "green");
 						$("#cell_1_4").css("background-color" , "green");
+						$("#cell_1_5").css("background-color" , "green");
 					break;
 					case 4: // S
-						$("#cell_0_4").css("background-color" , "red");
 						$("#cell_0_5").css("background-color" , "red");
+						$("#cell_0_4").css("background-color" , "red");
 						$("#cell_1_4").css("background-color" , "red");
-						$("#cell_1_5").css("background-color" , "red");
+						$("#cell_1_3").css("background-color" , "red");
 					break;
 					case 5: // L
+						$("#cell_0_3").css("background-color" , "blue");
 						$("#cell_0_4").css("background-color" , "blue");
 						$("#cell_0_5").css("background-color" , "blue");
-						$("#cell_1_4").css("background-color" , "blue");
-						$("#cell_1_5").css("background-color" , "blue");
+						$("#cell_1_3").css("background-color" , "blue");
 					break;
 					case 6: // L
+						$("#cell_0_3").css("background-color" , "orange");
 						$("#cell_0_4").css("background-color" , "orange");
 						$("#cell_0_5").css("background-color" , "orange");
-						$("#cell_1_4").css("background-color" , "orange");
-						$("#cell_1_5").css("background-color" , "orange");
+						$("#cell_0_5").css("background-color" , "orange");
 					break;
 				}
 			}

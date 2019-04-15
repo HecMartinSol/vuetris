@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid" id="nextPiecesColumn">
 		<div class="row">
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded board_cell">
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded piece_cell">
 				<div id="nextPiece" class="text-center">
 					<h5>NEXT</h5>
 					<img src="https://picsum.photos/100/100?random" alt="..." class="img-thumbnail">
@@ -10,7 +10,7 @@
 		</div>
 
 		<div v-for="i in (this.num_next_pieces - 1)" class="row">
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded board_cell">
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded piece_cell">
 				<div  id="nextPiece_mini">			
 					<img src="https://picsum.photos/100/100?random" alt="..." class="img-thumbnail">
 				</div>
@@ -20,7 +20,7 @@
 		<br>
 
 		<div class="row">
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded board_cell">
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 rounded piece_cell">
 				<div id="nextPiece" class="text-center">
 					<h5>SAVED</h5>
 					<img src="https://picsum.photos/100/100?random" alt="..." class="img-thumbnail">
