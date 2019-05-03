@@ -20,6 +20,6 @@
 <style type="text/css" scoped>
 	#currGame{
 	    background-color: #ffffffa3;
-	    min-height: 50em;
+	    min-height: 42em;
 	}
 </style>

@@ -6,7 +6,7 @@
 		<board :num_next_pieces="num_next_pieces"></board>
 
 
-		<button class="btn btn-sm btn-primary float-right" data-toggle="modal" :data-target="'#'+this.id_modal" @click="startMarathon()">Start</button>
+		<button class="btn btn-sm btn-primary float-right" id="btn_start_maraton" data-toggle="modal" :data-target="'#'+this.id_modal" @click="startMarathon()">Start</button>
 		<countdownmodal :id_modal="this.id_modal" :countdownvalue="3"></countdownmodal>
 
 	</div>
@@ -33,7 +33,12 @@
 				in_game : false,
 				moving_piece : false,
 				curr_piece : -1,
-				next_pieces : []
+				next_pieces : [],
+
+				timeInterval : 1500,
+				linesToBeat : 50,
+
+				clock : null
 
 			}
 		},
@@ -41,30 +46,34 @@
 		methods : {
 
 			startMarathon(){
-				// Manda el evento al hijo CountDownModal
-				var marathon = this;
+				var MTH = this;
+
+				bus.$emit("resetBoard", function(){});
+
 
 				bus.$emit("makeCountdown", function(){
 					console.log("go");
 
-					marathon.in_game = true;
-					marathon.fillNextPieces();
+					MTH.in_game = true;
+					MTH.fillNextPieces();
 					
-					marathon.getNextPiece();
+					MTH.getNextPiece();
 
-					var clock = setInterval(function(){
+					MTH.clock = setInterval(function(){
 
-						if (!marathon.moving_piece) {
-							marathon.getNextPiece();
+						if (!MTH.moving_piece) {
+							MTH.getNextPiece();
 						}
 						
-						marathon.fillNextPieces();
+						MTH.fillNextPieces();
 
-						console.log("move");
+						console.log("move | " + MTH.curr_piece +" |" + MTH.next_pieces);
 
+						bus.$emit("movePieceDown", function(){
 
+						});
 
-					}, 1500);
+					}, MTH.timeInterval);
 				});
 			},
 			getNextPiece(){
@@ -85,7 +94,20 @@
 				let rnd = parseInt(Math.random() * (6 - 0) + 0);
 				this.next_pieces.push(rnd);
 			}
-		}
+		},
+
+		created(){
+
+			// Escucha el bus
+			bus.$on("notMovingPiece",(piece) => {  
+				this.getNextPiece();
+				this.fillNextPieces();
+			});
+			bus.$on("gameOver",(piece) => { 
+				clearTimeout(this.clock);
+			});
+		},
+
 	}
 </script>
 
